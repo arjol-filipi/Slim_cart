@@ -5,13 +5,19 @@ use Slim\Views\Twig;
 use Cart\Basket\Basket;
 use Slim\Views\TwigExtension;
 use Interop\Container\ContainerInterface;
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
+//use Monolog\Logger;
+//use Monolog\Handler\StreamHandler;
 use Cart\Support\Storage\SessionStorage;
 use Cart\Support\Storage\Contracts\StorageInterface;
+use Cart\Validation\Contracts\ValidatorInterface;
+use Cart\Validation\Validator;
+
 return [
   // Router container
   'router' => get(Slim\Router::class),
+  ValidatorInterface::class => function(ContainerInterface $c){
+    		return new Validator;
+    },
   // Storage Interface
   StorageInterface::class => function(ContainerInterface $c) {
     return new SessionStorage('cart');
@@ -35,11 +41,11 @@ return [
     return $twig;
   },
   // Monolog
-  Logger::class => function (ContainerInterface $c) {
-    $log = new Logger('Cart');
-    $log->pushHandler(new StreamHandler('../logs/app.log', Logger::INFO));
-    return $log;
-  },
+  //Logger::class => function (ContainerInterface $c) {
+   // $log = new Logger('Cart');
+  //  $log->pushHandler(new StreamHandler('../logs/app.log', Logger::INFO));
+ //   return $log;
+ // },
   Product::class => function(ContainerInterface $c) {
     return new Product;
   }

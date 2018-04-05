@@ -12,7 +12,8 @@
 
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{path_for('cart.index')}}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Cart (0)</a></li>
+                <li><a href="{{path_for('cart.index')}}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
+                </span> Cart ({{ basket.itemCount }})</a></li>
             </ul>
         </div>
     </div>

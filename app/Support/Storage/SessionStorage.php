@@ -2,7 +2,7 @@
 namespace Cart\Support\Storage;
 use Countable;
 use Cart\Support\Storage\Contracts\StorageInterface;
-class SessionStorage implements StorageInterface
+class SessionStorage implements StorageInterface,Countable
 {
   protected $bucket;
   public function __construct($bucket = 'default')
